@@ -1,0 +1,35 @@
+$border: 1px solid #0000001f;
+$font-size: 16px;
+$font-color: black;
+$alternate-row-color: #f6f8fa;
+
+.mat-row,
+.mat-header-row {
+    height: 37px;
+}
+
+.mat-row:nth-child(even){
+    background-color: $alternate-row-color;
+}
+
+.mat-header-cell,
+.mat-cell {
+    padding: 6px 13px;
+    border-right: $border;
+    border-bottom: $border;
+}
+
+.mat-header-cell {
+    color: $font-color;
+    font-size: $font-size;
+    font-weight: bold;
+    border-top: $border;
+}
+
+.mat-column-cityName {
+    border-left: $border;
+}
+
+.mat-cell {
+    font-size: $font-size;
+}

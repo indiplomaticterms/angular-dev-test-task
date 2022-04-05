@@ -1,0 +1,19 @@
+<ng-container *ngIf="hourlyTable$ | async as hourlyTable; else noData">
+
+  <bp-forecast-table [datasource]="hourlyTable!">
+    <ng-template #headerCell let-col>
+      {{col.dt | date:'HH:mm'}}
+    </ng-template>
+
+    <ng-template #cell let-col="col" let-element="element">
+      <span [matTooltip]="'Local time in ' + element.location.name + ': ' + (col.dt | offsetTime : element.timezoneOffset : 'HH:mm')">
+        {{element.cells[col.id]?.temp | temperature}}
+      </span>
+    </ng-template>
+  </bp-forecast-table>
+
+</ng-container>
+
+<ng-template #noData>
+  There aren't any hourly forecasts yet. Start searching for some locations.
+</ng-template>

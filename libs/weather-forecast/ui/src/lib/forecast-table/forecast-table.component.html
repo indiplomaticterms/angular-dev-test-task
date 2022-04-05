@@ -1,0 +1,35 @@
+<table mat-table *ngIf="datasource?.rows?.length else noData" [dataSource]="datasource!.rows">
+  
+  <ng-container matColumnDef="cityName">
+    <th mat-header-cell *matHeaderCellDef> City Name </th>
+    <td mat-cell *matCellDef="let element"> 
+        <span [matTooltip]="(element.location | locationDetails)!">
+          {{element.location.name}}
+        </span>
+    </td>
+  </ng-container>
+
+  <ng-container *ngFor="let col of datasource!.cols" matColumnDef="{{col.id}}">
+    <th mat-header-cell *matHeaderCellDef>
+        <ng-container *ngIf="headerCellTemplateRef; else defaultHeaderCellTemplate" 
+            [ngTemplateOutlet]="headerCellTemplateRef" [ngTemplateOutletContext]="{$implicit: col}"></ng-container>
+        <ng-template #defaultHeaderCellTemplate>
+          {{col.dt | date:'full'}}
+        </ng-template>        
+    </th>
+    <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="cellTemplateRef; else defaultCellTemplate" 
+            [ngTemplateOutlet]="cellTemplateRef" [ngTemplateOutletContext]="{col: col, element: element}"></ng-container>
+        <ng-template #defaultCellTemplate>
+          {{element.cells[col.id]?.temp | temperature}}
+        </ng-template>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<ng-template #noData>
+  No data available
+</ng-template>

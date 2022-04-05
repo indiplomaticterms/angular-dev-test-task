@@ -1,0 +1,13 @@
+<form (submit)="$event.preventDefault(); doSubmit();">
+  <mat-form-field>
+    <input matInput type="text" autocomplete="off" placeholder="Search city or state or anything" [formControl]="query" />
+    
+    <button matSuffix mat-icon-button aria-label="Start search" *ngIf="!busy">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <mat-progress-spinner matSuffix mode="indeterminate" diameter="14" *ngIf="busy"></mat-progress-spinner>
+
+    <mat-error *ngIf="query.invalid">Please provide location name</mat-error>
+  </mat-form-field>
+</form>

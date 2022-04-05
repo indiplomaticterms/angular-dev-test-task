@@ -4,7 +4,10 @@
 		"paths": {
 			"@bp/line-chart/models": ["libs/line-chart/models/src/index.ts"],
 			"@bp/line-chart/services": ["libs/line-chart/services/src/index.ts"],
-			"@bp/weather-forecast/services": ["libs/weather-forecast/services/src/index.ts"]
+			"@bp/weather-forecast/feature-search": ["libs/weather-forecast/feature-search/src/index.ts"],
+			"@bp/weather-forecast/services": ["libs/weather-forecast/services/src/index.ts"],
+			"@bp/weather-forecast/state": ["libs/weather-forecast/state/src/index.ts"],
+			"@bp/weather-forecast/ui": ["libs/weather-forecast/ui/src/index.ts"]
 		},
 		"baseUrl": ".",
 		"rootDir": ".",

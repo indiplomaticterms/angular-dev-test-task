@@ -1,0 +1,13 @@
+<ng-container *ngIf="dailyTable$ | async as dailyTable; else noData">
+
+  <bp-forecast-table [datasource]="dailyTable!">
+    <ng-template #headerCell let-col>
+      {{col.dt | date:'EEEEEE'}}
+    </ng-template>
+  </bp-forecast-table>
+
+</ng-container>
+
+<ng-template #noData>
+  There aren't any daily forecasts yet. Start searching for some locations.
+</ng-template>

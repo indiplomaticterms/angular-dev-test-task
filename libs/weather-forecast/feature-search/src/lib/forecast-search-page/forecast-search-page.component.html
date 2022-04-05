@@ -1,0 +1,33 @@
+<header>
+  <mat-toolbar>
+    <mat-icon>thermostat</mat-icon>
+    <span class="caption">
+      Weather forecast
+    </span>
+
+    <span class="search-input">
+      <bp-location-search-input [value]="searchQuery$ | async" [busy]="(loading$ | async)!"
+          (submitted)="onSearchSubmit($event)"></bp-location-search-input>        
+    </span>
+
+    <span class="search-message in-progress" *ngIf="loading$ | async">
+      Searching...
+    </span>
+    <span class="search-message nothing-found" *ngIf="nothigFound$ | async">
+      Sorry, no results found. Please try a different search
+    </span>
+    <span class="search-message failure" *ngIf="error$ | async">
+      Some error occured. Please try again
+    </span>
+  </mat-toolbar>
+</header>
+
+<section class="content">
+
+  <section class="mode-toggle">
+    <bp-forecast-mode-toggle [value]="(forecastMode$ | async)!" [disabled]="(loading$ | async)!"
+        (valueChange)="onModeChange($event)"></bp-forecast-mode-toggle>
+  </section>
+
+  <router-outlet></router-outlet>    
+</section>

@@ -1,0 +1,5 @@
+<mat-button-toggle-group name="forecastMode" aria-label="Forecast frequency"
+      [(value)]="value" [disabled]="disabled" (valueChange)="valueChange.emit($event)">
+  <mat-button-toggle value="hourly" aria-label="Hourly">Hourly</mat-button-toggle>
+  <mat-button-toggle value="daily"  aria-label="Daily">Daily</mat-button-toggle>
+</mat-button-toggle-group>
